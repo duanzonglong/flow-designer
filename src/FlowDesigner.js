@@ -26,7 +26,11 @@ export default class FlowDesigner{
         container.append(this.nodeToolbar);
 
         this.canvasContainer=$(`<div class="fd-canvas-container"></div>`);
-        this.canvasContainer.css('height',$(window).height()-100);
+        let height=$(window).height()-100;
+        if(height<500){
+            height=500;
+        }
+        this.canvasContainer.css('height',height);
         container.append(this.canvasContainer);
         this.context=new Context(this.canvasContainer);
         this.canvas=new Canvas(this.context);

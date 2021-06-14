@@ -3,12 +3,12 @@
  */
 import Raphael from 'raphael';
 import UndoManager from 'undo-manager';
-import uuid from 'node-uuid';
 import SelectTool from './tools/SelectTool.js';
 import ConnectionTool from './tools/ConnectionTool.js';
 import Connection from './Connection.js';
 import * as event from './event.js';
 import Node from './Node.js';
+import { v4 } from 'uuid';
 
 export default class Context{
     constructor(container){
@@ -94,7 +94,7 @@ export default class Context{
     }
 
     nextUUID(){
-        return uuid.v1();
+        return v4();
     }
 
     getFigureById(id){
