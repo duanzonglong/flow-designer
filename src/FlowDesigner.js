@@ -42,7 +42,7 @@ export default class FlowDesigner{
 
         const propertyTab=$(`<ul class="nav nav-tabs">
             <li class="active">
-                <a href="${propContainerId}" data-toggle="tab">属性面板 <i class="glyphicon glyphicon-circle-arrow-down" style="color:#9E9E9E;font-size: 16px;vertical-align: middle;cursor: pointer" title="点击显示/隐藏属性面板" id="__prop_panel_tool__"></i></a>
+                <a href="${propContainerId}" data-toggle="tab">属性面板 <i class="fd fd-arrow-down" style="color:#9E9E9E;font-size: 16px;vertical-align: middle;cursor: pointer" title="点击显示/隐藏属性面板" id="__prop_panel_tool__"></i></a>
             </li>
         </ul>`);
         propertyPanel.append(propertyTab);
@@ -60,11 +60,11 @@ export default class FlowDesigner{
             tabContent.toggle();
             const display=tabContent.css("display");
             if(!display || display==='none'){
-                propPanelTool.removeClass("glyphicon-circle-arrow-down");
-                propPanelTool.addClass("glyphicon-circle-arrow-left");
+                propPanelTool.removeClass("fd-arrow-down");
+                propPanelTool.addClass("fd-arrow-left");
             }else{
-                propPanelTool.removeClass("glyphicon-circle-arrow-left");
-                propPanelTool.addClass("glyphicon-circle-arrow-down");
+                propPanelTool.removeClass("fd-arrow-left");
+                propPanelTool.addClass("fd-arrow-down");
             }
         });
         this._bindSnapToEvent();
@@ -152,9 +152,9 @@ export default class FlowDesigner{
         const context=this.context,_this=this;
 
         for(let btn of this.buttons){
-            const btnTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="${btn.tip}">
-                ${btn.icon}
-            </button>`);
+            const btnTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="${btn.tip}">
+            <input type="radio" name="tools"> ${btn.icon}
+            </label>`);
             btnTool.click(function(){
                 if(btn.disabled){
                     return;
@@ -164,27 +164,27 @@ export default class FlowDesigner{
             this.toolbar.append(btnTool);
         }
 
-        const selectTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="选择">
-            <i class="fd fd-select" style="color:#737383"></i>
-        </button>`);
+        const selectTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="选择">
+            <input type="radio" name="tools"> <i class="fd fd-select" style="color:#737383"></i>
+        </label>`);
         this.toolbar.append(selectTool);
         selectTool.click(function (e) {
             context.cancelConnection();
             context.currentTool=context.selectTool;
             _this.nodeToolbar.children('label').removeClass('active');
         });
-        const connectionTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="在两节点间创建连接线">
-            <i class="fd fd-line" style="color:#737383"></i>
-        </button>`);
+        const connectionTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="在两节点间创建连接线">
+            <input type="radio" name="tools"> <i class="fd fd-line" style="color:#737383"></i>
+        </label>`);
         this.toolbar.append(connectionTool);
         connectionTool.click(function (e) {
             context.cancelConnection();
             context.currentTool=context.connectionTool;
             _this.nodeToolbar.children('label').removeClass('active');
         });
-        const undoTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="重做">
-            <i class="fd fd-undo" style="color:#737383"></i>
-        </button>`);
+        const undoTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="重做">
+            <input type="radio" name="tools"> <i class="fd fd-undo" style="color:#737383"></i>
+        </label>`);
         this.toolbar.append(undoTool);
         undoTool.click(function (e) {
             context.cancelConnection();
@@ -195,9 +195,9 @@ export default class FlowDesigner{
                 window._setDirty();
             }
         });
-        const redoTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="撤消">
-            <i class="fd fd-redo" style="color:#737383"></i>
-        </button>`);
+        const redoTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="撤消">
+            <input type="radio" name="tools"> <i class="fd fd-redo" style="color:#737383"></i>
+        </label>`);
         this.toolbar.append(redoTool);
         redoTool.click(function (e) {
             context.cancelConnection();
@@ -209,9 +209,9 @@ export default class FlowDesigner{
             }
         });
 
-        const snapTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="网格吸附">
-            <i class="fd fd-snapto" style="color:#737383"></i>
-        </button>`);
+        const snapTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="网格吸附">
+            <input type="radio" name="tools"> <i class="fd fd-snapto" style="color:#737383"></i>
+        </lab>`);
         this.toolbar.append(snapTool);
         snapTool.click(function (e) {
             context.cancelConnection();
@@ -219,9 +219,9 @@ export default class FlowDesigner{
             _this.nodeToolbar.children('label').removeClass('active');
             context.currentTool=context.selectTool;
         });
-        const removeTool=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="删除选择对象">
-            <i class="fd fd-delete" style="color:#737383"></i>
-        </button>`);
+        const removeTool=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="删除选择对象">
+            <input type="radio" name="tools"> <i class="fd fd-delete" style="color:#737383"></i>
+        </label>`);
         this.toolbar.append(removeTool);
         removeTool.click(function (e) {
             context.cancelConnection();
@@ -232,9 +232,9 @@ export default class FlowDesigner{
                 window._setDirty();
             }
         });
-        const alignCenter=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="竖直居中">
-             <i class="fd fd-align-center"></i>
-        </button>`);
+        const alignCenter=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="竖直居中">
+            <input type="radio" name="tools"> <i class="fd fd-align-center"></i>
+        </label>`);
         this.toolbar.append(alignCenter);
         alignCenter.click(function (e) {
             context.cancelConnection();
@@ -245,9 +245,9 @@ export default class FlowDesigner{
                 window._setDirty();
             }
         });
-        const alignMiddle=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="水平居中">
-             <i class="fd fd-align-middle"></i>
-        </button>`);
+        const alignMiddle=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="水平居中">
+            <input type="radio" name="tools"> <i class="fd fd-align-middle"></i>
+        </label>`);
         this.toolbar.append(alignMiddle);
         alignMiddle.click(function (e) {
             context.cancelConnection();
@@ -258,9 +258,9 @@ export default class FlowDesigner{
                 window._setDirty();
             }
         });
-        const sameSize=$(`<button type="button" class="btn btn-default btn-light" style="border:none;border-radius:0" title="将选中的所有组件的尺寸设置为相同">
-             <i class="fd fd-samesize"></i>
-        </button>`);
+        const sameSize=$(`<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="将选中的所有组件的尺寸设置为相同">
+            <input type="radio" name="tools"> <i class="fd fd-samesize"></i>
+        </label>`);
         this.toolbar.append(sameSize);
         sameSize.click(function (e) {
             context.cancelConnection();
