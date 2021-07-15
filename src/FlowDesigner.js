@@ -42,7 +42,7 @@ export default class FlowDesigner{
 
         const propertyTab=$(`<ul class="nav nav-tabs">
             <li class="active">
-                <a href="${propContainerId}" data-toggle="tab">属性面板 <i class="fd fd-arrow-down" style="color:#9E9E9E;font-size: 16px;vertical-align: middle;cursor: pointer" title="点击显示/隐藏属性面板" id="__prop_panel_tool__"></i></a>
+                <span data-toggle="tab">属性面板 <i class="fd fd-arrow-down icon-button" style="color:#9E9E9E;font-size: 16px;vertical-align: middle;cursor: pointer" title="点击显示/隐藏属性面板" id="__prop_panel_tool__"></i></span>
             </li>
         </ul>`);
         propertyPanel.append(propertyTab);
