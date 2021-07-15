@@ -440,7 +440,7 @@ export default class FlowDesigner{
             });
             info='<span style="color:orangered">错误：<br>'+info+'</span>';
             MsgBox.alert(info);
-            return false;
+            throw info;
         }
         return true;
     }
