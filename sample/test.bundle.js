@@ -2264,7 +2264,7 @@ var FlowDesigner = function () {
         var propertyPanel = $('<div class="fd-property-panel"/>');
         this.canvasContainer.append(propertyPanel);
 
-        var propertyTab = $('<ul class="nav nav-tabs">\n            <li class="active">\n                <span data-toggle="tab">\u5C5E\u6027\u9762\u677F <i class="fd fd-arrow-down icon-button" style="color:#9E9E9E;font-size: 16px;vertical-align: middle;cursor: pointer" title="\u70B9\u51FB\u663E\u793A/\u9690\u85CF\u5C5E\u6027\u9762\u677F" id="__prop_panel_tool__"></i></span>\n            </li>\n        </ul>');
+        var propertyTab = $('<ul class="nav nav-tabs">\n            <li class="active">\n                <span data-toggle="tab">Property Panel <i class="fd fd-arrow-down icon-button" style="color:#9E9E9E;font-size: 16px;vertical-align: middle;cursor: pointer" title="Show/Hide" id="__prop_panel_tool__"></i></span>\n            </li>\n        </ul>');
         propertyPanel.append(propertyTab);
         propertyTab.mousedown(function (e) {
             e.preventDefault();
@@ -2425,21 +2425,21 @@ var FlowDesigner = function () {
                 }
             }
 
-            var selectTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u9009\u62E9">\n            <input type="radio" name="tools"> <i class="fd fd-select" style="color:#737383"></i>\n        </label>');
+            var selectTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Select">\n            <input type="radio" name="tools"> <i class="fd fd-select" style="color:#737383"></i>\n        </label>');
             this.toolbar.append(selectTool);
             selectTool.click(function (e) {
                 context.cancelConnection();
                 context.currentTool = context.selectTool;
                 _this.nodeToolbar.children('label').removeClass('active');
             });
-            var connectionTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u5728\u4E24\u8282\u70B9\u95F4\u521B\u5EFA\u8FDE\u63A5\u7EBF">\n            <input type="radio" name="tools"> <i class="fd fd-line" style="color:#737383"></i>\n        </label>');
+            var connectionTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Connect Line">\n            <input type="radio" name="tools"> <i class="fd fd-line" style="color:#737383"></i>\n        </label>');
             this.toolbar.append(connectionTool);
             connectionTool.click(function (e) {
                 context.cancelConnection();
                 context.currentTool = context.connectionTool;
                 _this.nodeToolbar.children('label').removeClass('active');
             });
-            var undoTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u91CD\u505A">\n            <input type="radio" name="tools"> <i class="fd fd-undo" style="color:#737383"></i>\n        </label>');
+            var undoTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Redo">\n            <input type="radio" name="tools"> <i class="fd fd-undo" style="color:#737383"></i>\n        </label>');
             this.toolbar.append(undoTool);
             undoTool.click(function (e) {
                 context.cancelConnection();
@@ -2450,7 +2450,7 @@ var FlowDesigner = function () {
                     window._setDirty();
                 }
             });
-            var redoTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u64A4\u6D88">\n            <input type="radio" name="tools"> <i class="fd fd-redo" style="color:#737383"></i>\n        </label>');
+            var redoTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Undo">\n            <input type="radio" name="tools"> <i class="fd fd-redo" style="color:#737383"></i>\n        </label>');
             this.toolbar.append(redoTool);
             redoTool.click(function (e) {
                 context.cancelConnection();
@@ -2462,7 +2462,7 @@ var FlowDesigner = function () {
                 }
             });
 
-            var snapTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u7F51\u683C\u5438\u9644">\n            <input type="radio" name="tools"> <i class="fd fd-snapto" style="color:#737383"></i>\n        </lab>');
+            var snapTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Snap to Grid">\n            <input type="radio" name="tools"> <i class="fd fd-snapto" style="color:#737383"></i>\n        </lab>');
             this.toolbar.append(snapTool);
             snapTool.click(function (e) {
                 context.cancelConnection();
@@ -2470,7 +2470,7 @@ var FlowDesigner = function () {
                 _this.nodeToolbar.children('label').removeClass('active');
                 context.currentTool = context.selectTool;
             });
-            var removeTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u5220\u9664\u9009\u62E9\u5BF9\u8C61">\n            <input type="radio" name="tools"> <i class="fd fd-delete" style="color:#737383"></i>\n        </label>');
+            var removeTool = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Delete">\n            <input type="radio" name="tools"> <i class="fd fd-delete" style="color:#737383"></i>\n        </label>');
             this.toolbar.append(removeTool);
             removeTool.click(function (e) {
                 context.cancelConnection();
@@ -2481,7 +2481,7 @@ var FlowDesigner = function () {
                     window._setDirty();
                 }
             });
-            var alignCenter = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u7AD6\u76F4\u5C45\u4E2D">\n            <input type="radio" name="tools"> <i class="fd fd-align-center"></i>\n        </label>');
+            var alignCenter = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Vertical Middle">\n            <input type="radio" name="tools"> <i class="fd fd-align-center"></i>\n        </label>');
             this.toolbar.append(alignCenter);
             alignCenter.click(function (e) {
                 context.cancelConnection();
@@ -2492,7 +2492,7 @@ var FlowDesigner = function () {
                     window._setDirty();
                 }
             });
-            var alignMiddle = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u6C34\u5E73\u5C45\u4E2D">\n            <input type="radio" name="tools"> <i class="fd fd-align-middle"></i>\n        </label>');
+            var alignMiddle = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Horizontal Center">\n            <input type="radio" name="tools"> <i class="fd fd-align-middle"></i>\n        </label>');
             this.toolbar.append(alignMiddle);
             alignMiddle.click(function (e) {
                 context.cancelConnection();
@@ -2503,7 +2503,7 @@ var FlowDesigner = function () {
                     window._setDirty();
                 }
             });
-            var sameSize = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="\u5C06\u9009\u4E2D\u7684\u6240\u6709\u7EC4\u4EF6\u7684\u5C3A\u5BF8\u8BBE\u7F6E\u4E3A\u76F8\u540C">\n            <input type="radio" name="tools"> <i class="fd fd-samesize"></i>\n        </label>');
+            var sameSize = $('<label class="btn btn-default btn-light" style="border:none;border-radius:0" title="Same Size">\n            <input type="radio" name="tools"> <i class="fd fd-samesize"></i>\n        </label>');
             this.toolbar.append(sameSize);
             sameSize.click(function (e) {
                 context.cancelConnection();
