@@ -294,8 +294,8 @@ export default class FlowDesigner{
             this.propContainer.empty();
             if(target instanceof Node){
                 const name=target.name || target.text.attr('text');
-                const nameGroup=$(`<div class="form-group"><label>节点名称：</label></div>`);
-                const nameText=$(`<input type="text" class="form-control" style="width: 305px;display: inline-block" value="${name}">`);
+                const nameGroup=$(`<div class="form-group"><label>节点名称(Node Name)：</label></div>`);
+                const nameText=$(`<input type="text" class="form-control" value="${name}">`);
                 nameGroup.append(nameText);
                 this.propContainer.append(nameGroup);
                 nameText.change(function(e){
@@ -331,8 +331,8 @@ export default class FlowDesigner{
                 });
                 this.propContainer.append(target._tool.getPropertiesProducer().call(target));
             }else if(target instanceof Connection){
-                const nameGroup=$(`<div class="form-group"><label>连线名称：</label></div>`);
-                const nameText=$(`<input type="text" class="form-control" style="width: 305px;display: inline-block" value="${target.name ? target.name : ''}">`);
+                const nameGroup=$(`<div class="form-group"><label>连线名称(Connection Name)：</label></div>`);
+                const nameText=$(`<input type="text" class="form-control" value="${target.name ? target.name : ''}">`);
                 nameGroup.append(nameText);
                 this.propContainer.append(nameGroup);
                 nameText.change(function(e){
@@ -367,10 +367,10 @@ export default class FlowDesigner{
                     });
                 });
 
-                const lineTypeGroup=$(`<div class="form-group"><label>线型：</label></div>`);
-                const typeSelect=$(`<select class="form-control"  style="width: 335px;display: inline-block">
-                    <option value="line">直线</option>
-                    <option value="curve">直角曲线</option>
+                const lineTypeGroup=$(`<div class="form-group"><label>线型(Line Style)：</label></div>`);
+                const typeSelect=$(`<select class="form-control">
+                    <option value="line">直线(Straight Line)</option>
+                    <option value="curve">直角曲线(Chamfer Curve)</option>
                 </select>`);
                 lineTypeGroup.append(typeSelect);
                 typeSelect.val(target.type);
