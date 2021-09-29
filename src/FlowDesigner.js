@@ -27,8 +27,8 @@ export default class FlowDesigner{
 
         this.canvasContainer=$(`<div class="fd-canvas-container"></div>`);
         let height=$(window).height()-100;
-        if(height<500){
-            height=500;
+        if(height<800){
+            height=800;
         }
         this.canvasContainer.css('height',height);
         container.append(this.canvasContainer);
