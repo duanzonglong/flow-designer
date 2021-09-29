@@ -51,7 +51,6 @@ export default class FlowDesigner{
         });
         this.propContainer=$(`<div id="${propContainerId}"/>`);
         const tabContent=$(`<div class="tab-content" style="min-height: 300px;padding:10px"/>`);
-        tabContent.append('<div class="text-info" style="margin-bottom:8px;color: #999999;">属性值修改后，请回车以确认</div>');
         tabContent.append(this.propContainer);
         propertyPanel.append(tabContent);
         propertyPanel.draggable();
